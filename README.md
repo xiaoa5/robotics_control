@@ -1,5 +1,5 @@
 # robotics_control
-robotics controlled with mpc wbc and rl
+robotics with mpc wbc and rl
 
 code can be excuted in colab
 
