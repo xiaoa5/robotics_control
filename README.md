@@ -9,9 +9,13 @@ mpc is just an optimization, to find the optimal solution with various constrain
 rl is also an optimization, but required few mathmatics and physics as mpc, rl is mainly data driven, the parameter of the rl trained with trail and error.
 
 combine mpc and rl, i hope:
+
 1 rl works as a residium of the mpc control.
+
 2 rl helps mpc control in extrem senarios (high speed starting).
+
 3 rl improves gaits, maybe looks more naturely.
+
 4 rl improves energy effiency.
 
 details:
