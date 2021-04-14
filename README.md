@@ -22,7 +22,7 @@ details:
 
 Base State (estimated) --------->.............................swing leg control (desired foot position)....-----> inversed kinematics 
 
-Desired State (forward speed) -->.....swing or stance -->..........................................................................----> motor torgue  
+Desired State (forward speed) -->swing or stance -->..........................................................................----> motor torgue  
 
 trotting Gait (fixed) ---------->.............................stance leg control (desired foot force)......-----> jacobian
 
