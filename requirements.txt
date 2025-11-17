@@ -1,0 +1,29 @@
+# Core dependencies for Robotics Control Project
+# Updated: 2025-11-17
+
+# Physics Simulation
+pybullet>=3.2.6
+
+# Reinforcement Learning
+gymnasium>=0.29.1
+stable-baselines3[extra]>=2.4.0
+
+# Deep Learning
+torch>=2.1.0
+
+# Numerical Computing
+numpy>=1.24.0,<2.0.0
+scipy>=1.11.0
+
+# Visualization and Logging
+tensorboard>=2.15.0
+matplotlib>=3.8.0
+
+# Optional but recommended
+# Weights & Biases for experiment tracking
+# wandb>=0.16.0
+
+# Development dependencies (optional)
+pytest>=7.4.0
+black>=23.0.0
+mypy>=1.7.0

@@ -1,0 +1,99 @@
+# Configuration for Robotics Control Training
+# This file contains all hyperparameters and settings
+
+# Environment Settings
+environment:
+  body_height: 0.24
+  stance_duration: [0.15, 0.15, 0.15, 0.15]
+  duty_factor: [0.6, 0.6, 0.6, 0.6]
+  init_phase_full_cycle: [0.0, 0.25, 0.5, 0.25]
+  max_episode_steps: 2500
+  action_repeat: 5
+  time_step: 0.001
+
+  # Robot physical parameters
+  robot:
+    body_mass: 11.02  # 108 / 9.8
+    body_inertia: [0.068, 0.0, 0.0, 0.0, 0.228, 0.0, 0.0, 0.0, 0.256]
+    hip_positions:
+      xx: 0.17
+      yy: 0.14
+      zz: 0.0
+
+  # Observation and action spaces
+  observation_space:
+    low: -20
+    high: 20
+    shape: [37]
+
+  action_space:
+    low: -0.3
+    high: 0.3
+    shape: [12]
+
+# Training Settings
+training:
+  algorithm: "PPO"
+  total_timesteps: 6000000
+  num_cpu: 4
+
+  # PPO Hyperparameters
+  ppo:
+    learning_rate: 0.0003
+    n_steps: 2048
+    batch_size: 64
+    n_epochs: 10
+    gamma: 0.99
+    gae_lambda: 0.95
+    clip_range: 0.2
+    clip_range_vf: null
+    ent_coef: 0.0
+    vf_coef: 0.5
+    max_grad_norm: 0.5
+
+    # Network architecture
+    policy_kwargs:
+      activation_fn: "Tanh"
+      net_arch:
+        pi: [256, 256]
+        vf: [256, 256]
+
+  # Normalization
+  vec_normalize:
+    norm_obs: true
+    norm_reward: false
+    clip_obs: 20.0
+    gamma: 0.99
+
+# Callback Settings
+callbacks:
+  checkpoint:
+    save_freq: 50000
+    save_path: "./logs/checkpoints/"
+
+  evaluation:
+    eval_freq: 10000
+    n_eval_episodes: 5
+    deterministic: true
+    best_model_save_path: "./logs/best_model/"
+    log_path: "./logs/eval/"
+
+  video_recorder:
+    render_freq: 10000
+    n_eval_episodes: 1
+
+# Logging Settings
+logging:
+  tensorboard_log: "./logs/tensorboard/"
+  verbose: 1
+
+# Reward Settings
+reward:
+  desired_base_velocity: 3.6
+  fall_penalty: -10.0
+  step_reward: 0.5
+  action_penalty_scale: 10.0
+  shake_penalty_scale: 0.5
+
+# Random Seed (set to null for random)
+seed: 42
